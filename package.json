@@ -1,0 +1,12 @@
+{
+  "name": "gzms-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Сайт GZMS.RU — офлайн-навигатор ГРЯЗЕМЕС",
+  "scripts": {
+    "deploy": "node scripts/deploy.mjs",
+    "check": "node scripts/check.mjs",
+    "serve": "node scripts/serve.mjs"
+  }
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Страница не найдена — ГРЯЗЕМЕС</title>
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#080b06" />
+  <link rel="icon" href="/assets/favicon.png" sizes="any" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <style>
+    .error-page { min-height: 100svh; display: grid; place-items: center; padding: 2rem var(--pad); text-align: center; }
+    .error-card { max-width: 620px; }
+    .error-code { font-family: var(--font-display); font-size: clamp(6rem, 22vw, 13rem); line-height: .8; letter-spacing: -.08em; color: var(--lime); text-shadow: 0 0 50px rgba(200,255,61,.2); }
+    .error-card h1 { margin-top: 1rem; font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.1; letter-spacing: -.04em; }
+    .error-card p { margin: 1rem auto 1.7rem; max-width: 430px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main class="error-page">
+    <div class="error-card">
+      <a class="brand" href="/" aria-label="ГРЯЗЕМЕС — на главную" style="justify-content:center;margin-bottom:2rem;">
+        <img class="brand__mark" src="/assets/icon-192.png" alt="" width="52" height="52" />
+        <span class="brand__text"><strong>ГРЯЗЕМЕС</strong><span>GZMS.RU</span></span>
+      </a>
+      <div class="error-code">404</div>
+      <h1>Колея оборвалась</h1>
+      <p>Такой страницы нет. Возможно, ссылка устарела или в адресе опечатка. Вернись на главную — там карта, гряземетр и APK.</p>
+      <a class="btn btn--primary btn--large" href="/">На главную</a>
+    </div>
+  </main>
+</body>
+</html>

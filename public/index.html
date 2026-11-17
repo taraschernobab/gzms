@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ГРЯЗЕМЕС — офлайн-навигатор бездорожья | GZMS.RU</title>
+  <meta name="description" content="ГРЯЗЕМЕС — офлайн-навигатор для бездорожья: карта, запись колеи, гряземетр, точки, SOS и гараж. APK для Android бесплатно, без рекламы и трекеров." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://gzms.ru/" />
+  <link rel="alternate" hreflang="ru-RU" href="https://gzms.ru/" />
+  <link rel="alternate" hreflang="x-default" href="https://gzms.ru/" />
+  <meta name="theme-color" content="#080b06" />
+  <link rel="icon" href="/assets/favicon.png" sizes="any" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png" />
+  <link rel="apple-touch-icon" href="/assets/icon-192.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preload" as="image" href="/images/hero-portrait.webp" fetchpriority="high" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ГРЯЗЕМЕС" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="ГРЯЗЕМЕС — навигатор бездорожья. Там, где нет дорог." />
+  <meta property="og:description" content="Офлайн-карта, запись колеи, гряземетр, точки и SOS. APK для Android бесплатно, без рекламы и трекеров." />
+  <meta property="og:url" content="https://gzms.ru/" />
+  <meta property="og:image" content="https://gzms.ru/images/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ГРЯЗЕМЕС — внедорожник и квадроцикл в грязи, лягушки и грибник" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ГРЯЗЕМЕС — навигатор бездорожья" />
+  <meta name="twitter:description" content="Офлайн-карта, запись колеи, гряземетр, точки и SOS. APK для Android бесплатно." />
+  <meta name="twitter:image" content="https://gzms.ru/images/og.jpg" />
+
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script>document.documentElement.classList.add('js');</script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://gzms.ru/#organization",
+          "name": "EgerLabs",
+          "url": "https://egerlabs.ru/",
+          "logo": { "@type": "ImageObject", "url": "https://gzms.ru/assets/icon-512.png" },
+          "sameAs": ["https://vk.ru/griazemes"],
+          "email": "hello@egerlabs.ru"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://gzms.ru/#website",
+          "url": "https://gzms.ru/",
+          "name": "ГРЯЗЕМЕС — навигатор бездорожья",
+          "inLanguage": "ru-RU",
+          "publisher": { "@id": "https://gzms.ru/#organization" }
+        },
+        {
+          "@type": "MobileApplication",
+          "@id": "https://gzms.ru/#app",
+          "name": "ГРЯЗЕМЕС",
+          "alternateName": "GZMS",
+          "url": "https://gzms.ru/",
+          "description": "Офлайн-навигатор для бездорожья: топографическая карта, запись колеи, гряземетр, точки, SOS, журнал и гараж.",
+          "image": "https://gzms.ru/assets/icon-512.png",
+          "screenshot": [
+            "https://gzms.ru/images/shots/map-tsareva.webp",
+            "https://gzms.ru/images/shots/record.webp",
+            "https://gzms.ru/images/shots/track.webp",
+            "https://gzms.ru/images/shots/journal.webp",
+            "https://gzms.ru/images/shots/garage.webp"
+          ],
+          "operatingSystem": "Android 8.0+",
+          "applicationCategory": "TravelApplication",
+          "applicationSubCategory": "Navigation",
+          "softwareVersion": "1.4.4",
+          "fileSize": "12.4MB",
+          "downloadUrl": "https://gzms.ru/downloads/griazemes-1.4.4.apk",
+          "installUrl": "https://gzms.ru/downloads/griazemes-1.4.4.apk",
+          "privacyPolicy": "https://gzms.ru/privacy.html",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "RUB", "availability": "https://schema.org/InStock" },
+          "publisher": { "@id": "https://gzms.ru/#organization" },
+          "featureList": [
+            "Офлайн-карта Топо с районами 5/10/25/50 км",
+            "Запись колеи, пауза и продолжение",
+            "Гряземетр и шесть рангов",
+            "Восемь типов точек и SOS",
+            "GPX, журнал, гараж и ТО",
+            "Без рекламы и трекеров"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://gzms.ru/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Работает ли ГРЯЗЕМЕС без интернета?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Да. Треки, точки, фото, гараж и скачанные районы хранятся на телефоне. Интернет нужен для новых тайлов карты, погоды, проверки обновлений и анонимного счётчика." }
+            },
+            {
+              "@type": "Question",
+              "name": "Сколько стоит приложение?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Бесплатно. Без рекламных сетей, подписок и встроенных покупок. Все функции доступны сразу." }
+            },
+            {
+              "@type": "Question",
+              "name": "Как установить APK?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Скачайте APK на телефон с Android 8.0 или новее, откройте файл и подтвердите установку. Разрешение на установку из этого источника выдаётся один раз." }
+            },
+            {
+              "@type": "Question",
+              "name": "Как обновляется приложение?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Приложение проверяет файл apk.json на нашем сервере и предлагает скачать новую версию. В RuStore обновления приходят через магазин, когда карточка опубликована." }
+            },
+            {
+              "@type": "Question",
+              "name": "Куда уходят треки и координаты?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Треки, точки, фото и настройки остаются на устройстве. В сеть уходят только тайлы карт, погода, проверка обновлений и анонимный счётчик без координат, имён и идентификаторов пользователя." }
+            },
+            {
+              "@type": "Question",
+              "name": "SOS вызывает спасателей?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Нет. SOS готовит сообщение с координатами и открывает SMS или «Поделиться». Отправляет его пользователь. В критической ситуации звоните 112." }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=113687510', 'ym');
+    ym(113687510, 'init', { ssr: true, webvisor: true, clickmap: true, accurateTrackBounce: true, trackLinks: true });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/113687510" style="position:absolute;left:-9999px" alt="" /></div></noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержимому</a>
+
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h5a4 4 0 0 0 0-8H9a4 4 0 0 1 0-8h7"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 14 4-4"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-offline" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M8.5 8.5a9 9 0 0 1 7 0M5 5a14 14 0 0 1 14 0M10 12a5 5 0 0 1 4 0"/><path d="M12 19h.01"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4L14 12l-2-2 2.7-3.7Z"/></symbol>
+    <symbol id="i-fish" viewBox="0 0 24 24"><path d="M3 12s3.5-5 8-5 8 5 8 5-3.5 5-8 5-8-5-8-5Z"/><path d="M19 7v10l3-2V9l-3-2Z"/><circle cx="9" cy="11" r=".8"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-vk" viewBox="0 0 24 24"><path d="M4 8c.6 4.9 3.2 8 7.6 8H13v-3.1c1.6.2 2.8 1.3 3.3 3.1H20c-.5-2.6-1.7-4.3-3.5-5.2 1.6-1 2.7-2.5 3.1-4.8h-3.2c-.4 1.6-1.4 2.8-2.9 3.3V6H12v6.1C9.8 10.9 8.6 8.8 8.3 6H4Z"/></symbol>
+  </svg>
+
+  <div class="site-shell">
+    <header class="site-header" id="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="/" aria-label="ГРЯЗЕМЕС — на главную">
+          <img class="brand__mark" src="/assets/icon-192.png" alt="" width="42" height="42" />
+          <span class="brand__text"><strong>ГРЯЗЕМЕС</strong><span>GZMS.RU</span></span>
+        </a>
+        <nav class="nav" id="site-nav" aria-label="Основная навигация">
+          <a href="#features">Возможности</a>
+          <a href="#screens">Экраны</a>
+          <a href="#mud">Гряземетр</a>
+          <a href="#offline">Офлайн</a>
+          <a href="#faq">Вопросы</a>
+          <a class="nav__download" href="/downloads/griazemes-1.4.4.apk" download>Скачать APK · 11,8 МБ</a>
+        </nav>
+        <div class="header-actions">
+          <a class="btn btn--small btn--primary" href="/downloads/griazemes-1.4.4.apk" download>
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+            Скачать APK
+          </a>
+          <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-controls="site-nav" aria-expanded="false" id="menu-toggle">
+            <svg class="icon icon--menu" aria-hidden="true"><use href="#i-menu"/></svg>
+            <svg class="icon icon--close" aria-hidden="true"><use href="#i-close"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="eyebrow__dot"></span> Android · офлайн · без рекламы</p>
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__name">ГРЯЗЕМЕС</span>
+            <span class="hero__domain">GZMS<i>.</i>RU</span>
+          </h1>
+          <p class="hero__tagline">Навигатор бездорожья.<br />Там, где нет дорог.</p>
+          <p class="hero__lead">
+            Офлайн-карта, запись колеи, гряземетр и точки, которые возвращают домой.
+            Для джипперов, квадроциклистов, рыбаков, охотников и грибников.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--large" href="/downloads/griazemes-1.4.4.apk" download>
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+              Скачать APK <span class="btn__note">11,8 МБ</span>
+            </a>
+            <a class="btn btn--ghost btn--large" href="#features">
+              Что умеет <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+          <ul class="hero__meta" aria-label="Параметры приложения">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Android 8.0+</li>
+            <li>v1.4.4</li>
+            <li>18+</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg> Без рекламы</li>
+          </ul>
+        </div>
+        <div class="hero__media">
+          <img class="hero__img" src="/images/hero-portrait.webp" alt="ГРЯЗЕМЕС: внедорожник, квадроцикл, рыбак и грибник в лесном болоте" width="1000" height="1200" fetchpriority="high" />
+          <div class="hero__media-gradient" aria-hidden="true"></div>
+          <div class="hero__badge"><span>GZMS.RU</span><small>офлайн-навигатор</small></div>
+          <div class="hero__sticker">колея<br />уже ждёт</div>
+        </div>
+        <a class="hero__scroll" href="#features" aria-label="Листать вниз"><span></span></a>
+      </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>Офлайн-карта</span><i>◆</i><span>Запись колеи</span><i>◆</i><span>Гряземетр</span><i>◆</i><span>Точки и SOS</span><i>◆</i><span>Без рекламы</span><i>◆</i><span>Android APK</span><i>◆</i>
+          <span>Офлайн-карта</span><i>◆</i><span>Запись колеи</span><i>◆</i><span>Гряземетр</span><i>◆</i><span>Точки и SOS</span><i>◆</i><span>Без рекламы</span><i>◆</i><span>Android APK</span><i>◆</i>
+        </div>
+      </div>
+
+      <section class="section section--features" id="features">
+        <div class="container">
+          <header class="section-head reveal">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Возможности</p>
+            <h2>Это не просто карта.<br /><em>Это ваш след.</em></h2>
+            <p class="section-head__lead">
+              ГРЯЗЕМЕС закрывает весь выезд: от скачанного района до ведомости «где я был»
+              и точки, к которой хочется вернуться.
+            </p>
+          </header>
+
+          <div class="bento">
+            <article class="feature feature--map reveal">
+              <div class="feature__copy">
+                <span class="feature__index">01 · Карта</span>
+                <h3>Карта, которая не сдаётся</h3>
+                <p>
+                  Один слой Топо: горизонтали, тропы, лес и болота. Режим «Курс» доворачивает
+                  карту по движению, «След» держит север сверху и вписывает весь трек в кадр.
+                </p>
+                <ul class="check-list">
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> OpenStreetMap + OpenTopoMap</li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Кэш тайлов в памяти телефона</li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Районы 5 / 10 / 25 / 50 км</li>
+                </ul>
+              </div>
+              <div class="feature__phone">
+                <div class="phone phone--feature">
+                  <div class="phone__screen"><img src="/images/shots/map-hero.webp" alt="Карта ГРЯЗЕМЕСа с топографическим слоем и треком" width="1080" height="2400" loading="lazy" /></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="feature reveal">
+              <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg></span>
+              <span class="feature__index">02 · Запись</span>
+              <h3>Колея под запись</h3>
+              <p>Фоновая запись, пауза и продолжение. Черновик переживает перезапуск: сел телефон — запись вернётся. Скорость, дистанция, высота и профиль.</p>
+            </article>
+
+            <article class="feature reveal">
+              <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-gauge"/></svg></span>
+              <span class="feature__index">03 · Гряземетр</span>
+              <h3>Грязь можно измерить</h3>
+              <p>Очки за километры, рельеф, медленную езду, грязь-точки и фото. Шесть рангов — от «Сухого асфальта» до «Легенды колеи».</p>
+            </article>
+
+            <article class="feature reveal">
+              <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
+              <span class="feature__index">04 · Точки</span>
+              <h3>Точки, которые спасают</h3>
+              <p>Грязь, брод, заправка, ночёвка, опасность, рыбалка, охота, веха и SOS. Фото с камеры, заметка и возврат по треку.</p>
+            </article>
+
+            <article class="feature reveal">
+              <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-offline"/></svg></span>
+              <span class="feature__index">05 · Офлайн</span>
+              <h3>Лес без связи — не проблема</h3>
+              <p>Тайлы, треки, точки и фото живут на телефоне. Скачал район — и можно уезжать дальше, чем ловит сеть.</p>
+            </article>
+
+            <article class="feature reveal">
+              <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+              <span class="feature__index">06 · Гараж</span>
+              <h3>Журнал и техника</h3>
+              <p>Внедорожник, квадроцикл, снегоход, мотоцикл, велосипед или пеший. Расход, бак, давление и журнал ТО — для моторизованных.</p>
+            </article>
+
+            <article class="feature reveal">
+              <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-fish"/></svg></span>
+              <span class="feature__index">07 · Рыбалка и охота</span>
+              <h3>Места, куда хочется вернуться</h3>
+              <p>Метки «Рыбалка» и «Охота», заметки и фото на месте. Возврат по треку снова приведёт к клёвому месту, засидке или грибной поляне.</p>
+            </article>
+
+            <article class="feature reveal">
+              <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
+              <span class="feature__index">08 · Экипаж</span>
+              <h3>Свои рядом</h3>
+              <p>Координаты через SMS или «Поделиться», точка сбора и погода. Честный совет, стоит ли лезть в грязь именно сегодня.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--screens" id="screens">
+        <div class="container">
+          <header class="section-head section-head--row reveal">
+            <div>
+              <p class="eyebrow"><span class="eyebrow__dot"></span> Экраны</p>
+              <h2>Посмотри в деле.</h2>
+            </div>
+            <p class="section-head__lead">Восемь экранов, которые заменяют бумажную карту, блокнот и разговоры «а помнишь, там был поворот?».</p>
+          </header>
+        </div>
+        <div class="rail-wrap">
+          <div class="rail" tabindex="0" aria-label="Скриншоты приложения">
+            <figure class="shot">
+              <div class="phone"><div class="phone__screen"><img src="/images/shots/map-tsareva.webp" alt="Карта бездорожья с офлайн-кэшем" width="1080" height="1920" loading="lazy" /></div></div>
+              <figcaption><strong>Карта</strong><span>Топо и офлайн-районы</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone"><div class="phone__screen"><img src="/images/shots/record.webp" alt="Экран записи колеи с гряземетром" width="1080" height="1920" loading="lazy" /></div></div>
+              <figcaption><strong>Запись</strong><span>Колея и гряземетр</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone"><div class="phone__screen"><img src="/images/shots/track.webp" alt="Просмотр трека: карта, скорость и набор высоты" width="1080" height="1920" loading="lazy" /></div></div>
+              <figcaption><strong>Трек</strong><span>Карта, график, фото</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone"><div class="phone__screen"><img src="/images/shots/journal.webp" alt="Журнал треков и маршрутов" width="1080" height="1920" loading="lazy" /></div></div>
+              <figcaption><strong>Журнал</strong><span>Все выезды в одном месте</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone"><div class="phone__screen"><img src="/images/shots/offline.webp" alt="Офлайн-карты: загрузка района" width="1080" height="1920" loading="lazy" /></div></div>
+              <figcaption><strong>Офлайн</strong><span>Район на 10 км — в кармане</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone"><div class="phone__screen"><img src="/images/shots/garage.webp" alt="Гараж: профиль, техника и ТО" width="1080" height="1920" loading="lazy" /></div></div>
+              <figcaption><strong>Гараж</strong><span>Техника и журнал ТО</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone"><div class="phone__screen"><img src="/images/shots/pause.webp" alt="Пауза записи: кофе-пауза" width="1080" height="1920" loading="lazy" /></div></div>
+              <figcaption><strong>Пауза</strong><span>Остановился — не потерял</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="phone"><div class="phone__screen"><img src="/images/shots/onboarding.webp" alt="Первый запуск: имя и профиль Пеший" width="1080" height="1920" loading="lazy" /></div></div>
+              <figcaption><strong>Старт</strong><span>Имя и профиль за минуту</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--mud" id="mud">
+        <div class="container mud-grid">
+          <div class="mud-copy reveal">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Гряземетр</p>
+            <h2>Грязь можно<br /><em>измерить.</em></h2>
+            <p class="section-head__lead">
+              Километры, рельеф, медленная езда, грязь-точки и фото складываются в очки.
+              Это не рейтинг соседа по гаражу — это ваша личная история выездов.
+            </p>
+            <div class="mud-stat"><strong>6</strong><span>рангов — от сухого асфальта до легенды колеи</span></div>
+            <a class="btn btn--ghost" href="/downloads/griazemes-1.4.4.apk" download>Проверить свой ранг <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <div class="ranks reveal">
+            <div class="rank"><span class="rank__score">0</span><span class="rank__name">Сухой асфальт</span><span class="rank__bar" style="--w:8%"></span></div>
+            <div class="rank"><span class="rank__score">80</span><span class="rank__name">Пыльник</span><span class="rank__bar" style="--w:16%"></span></div>
+            <div class="rank"><span class="rank__score">250</span><span class="rank__name">Гряземес</span><span class="rank__bar" style="--w:28%"></span></div>
+            <div class="rank"><span class="rank__score">700</span><span class="rank__name">Хрюндель</span><span class="rank__bar" style="--w:46%"></span></div>
+            <div class="rank"><span class="rank__score">1500</span><span class="rank__name">Болотный барон</span><span class="rank__bar" style="--w:68%"></span></div>
+            <div class="rank"><span class="rank__score">3000</span><span class="rank__name">Легенда колеи</span><span class="rank__bar" style="--w:100%"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--offline" id="offline">
+        <div class="container offline-grid">
+          <div class="offline-visual reveal">
+            <img src="/images/winter.webp" alt="Зимний выезд: снегоходы и внедорожник в лесу" width="900" height="1342" loading="lazy" />
+            <span class="offline-visual__tag">работает без сети</span>
+          </div>
+          <div class="offline-copy reveal">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Офлайн</p>
+            <h2>Скачай район —<br /><em>и в лес без связи.</em></h2>
+            <p class="section-head__lead">
+              Тайлы карты, треки, точки и фото хранятся в памяти телефона. Район 5/10/25/50 км
+              скачивается заранее, с оценкой веса и прогрессом — чтобы не узнать о дыре в карте
+              уже на болоте.
+            </p>
+            <div class="stats">
+              <div><strong>5–50</strong><span>км радиус района</span></div>
+              <div><strong>0</strong><span>рекламы и трекеров</span></div>
+              <div><strong>100%</strong><span>данных на телефоне</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--who" id="who">
+        <div class="container who-grid">
+          <div class="who-visual reveal">
+            <img src="/images/crew.webp" alt="Компания на внедорожниках и квадроциклах в лесу" width="900" height="1342" loading="lazy" />
+          </div>
+          <div class="who-copy reveal">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Для кого</p>
+            <h2>Вся компания<br /><em>в одном приложении.</em></h2>
+            <p class="section-head__lead">От квадроцикла до пешего похода. У каждого — свой профиль, но общая карта и общая колея.</p>
+            <ul class="chips" aria-label="Типы активности">
+              <li>Джиппинг</li><li>Квадроциклы</li><li>Эндуро</li><li>Снегоходы</li>
+              <li>Рыбалка</li><li>Охота</li><li>Грибы и ягоды</li><li>Пеший</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--download" id="download">
+        <div class="download-card reveal">
+          <img class="download-card__bg" src="/images/sunset.webp" alt="" width="900" height="1342" loading="lazy" />
+          <div class="download-card__overlay" aria-hidden="true"></div>
+          <div class="download-card__copy">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Скачать</p>
+            <h2>Забирай<br /><em>и в грязь.</em></h2>
+            <p>APK для Android 8.0+. Бесплатно, без рекламы, подписок и встроенных покупок.</p>
+            <a class="btn btn--primary btn--large" href="/downloads/griazemes-1.4.4.apk" download>
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+              Скачать APK <span class="btn__note">11,8 МБ</span>
+            </a>
+            <ul class="download-meta">
+              <li>Версия 1.4.4</li><li>Android 8.0+</li><li>18+</li><li>Без рекламы</li>
+            </ul>
+            <p class="download-hash">SHA-256 <code>b92bb7cd…2f25</code></p>
+          </div>
+          <div class="download-card__qr">
+            <div class="qr-card">
+              <img src="/assets/qr.png" alt="QR-код на сайт gzms.ru" width="180" height="180" loading="lazy" />
+              <strong>Наведи камеру</strong>
+              <span>и попадёшь на GZMS.RU</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--faq" id="faq">
+        <div class="container faq-grid">
+          <div class="faq-copy reveal">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Вопросы</p>
+            <h2>Коротко<br /><em>о главном.</em></h2>
+            <p class="section-head__lead">Если чего-то не хватает — напиши в группу. Мы читаем.</p>
+            <a class="text-link" href="https://vk.ru/griazemes" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-vk"/></svg> Группа ВКонтакте
+            </a>
+          </div>
+          <div class="faq-list reveal">
+            <details>
+              <summary>Работает ли ГРЯЗЕМЕС без интернета?<span class="faq-plus" aria-hidden="true"></span></summary>
+              <p>Да. Треки, точки, фото, гараж и скачанные районы хранятся на телефоне. Интернет нужен для новых тайлов карты, погоды, проверки обновлений и анонимного счётчика.</p>
+            </details>
+            <details>
+              <summary>Сколько стоит приложение?<span class="faq-plus" aria-hidden="true"></span></summary>
+              <p>Бесплатно. Без рекламных сетей, подписок и встроенных покупок. Все функции доступны сразу.</p>
+            </details>
+            <details>
+              <summary>Как установить APK?<span class="faq-plus" aria-hidden="true"></span></summary>
+              <p>Скачай файл на телефон с Android 8.0 или новее, открой его и подтверди установку. Разрешение на установку из этого источника выдаётся один раз.</p>
+            </details>
+            <details>
+              <summary>Как обновляется приложение?<span class="faq-plus" aria-hidden="true"></span></summary>
+              <p>Приложение проверяет файл apk.json на нашем сервере и предлагает скачать новую версию. В RuStore обновления приходят через магазин, когда карточка опубликована.</p>
+            </details>
+            <details>
+              <summary>Куда уходят треки и координаты?<span class="faq-plus" aria-hidden="true"></span></summary>
+              <p>Треки, точки, фото и настройки остаются на устройстве. В сеть уходят только тайлы карт, погода, проверка обновлений и анонимный счётчик без координат, имён и идентификаторов пользователя.</p>
+            </details>
+            <details>
+              <summary>SOS вызывает спасателей?<span class="faq-plus" aria-hidden="true"></span></summary>
+              <p>Нет. SOS готовит сообщение с координатами и открывает SMS или «Поделиться». Отправляет его пользователь. В критической ситуации звоните 112.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/" aria-label="ГРЯЗЕМЕС — на главную">
+            <img class="brand__mark" src="/assets/icon-192.png" alt="" width="42" height="42" />
+            <span class="brand__text"><strong>ГРЯЗЕМЕС</strong><span>GZMS.RU</span></span>
+          </a>
+          <p>Офлайн-навигатор бездорожья. Там, где нет дорог.</p>
+          <p class="footer-note">Проект студии <a href="https://egerlabs.ru/">EgerLabs</a> · Санкт-Петербург</p>
+        </div>
+        <nav class="footer-nav" aria-label="Приложение">
+          <strong>Приложение</strong>
+          <a href="#features">Возможности</a>
+          <a href="#screens">Экраны</a>
+          <a href="#mud">Гряземетр</a>
+          <a href="#download">Скачать APK</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Документы">
+          <strong>Документы</strong>
+          <a href="/privacy.html">Конфиденциальность</a>
+          <a href="/ugc.html">Правила контента</a>
+          <a href="mailto:hello@egerlabs.ru">hello@egerlabs.ru</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Связь">
+          <strong>Связь</strong>
+          <a href="https://vk.ru/griazemes" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+          <a href="https://egerlabs.ru/">EgerLabs.ru</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 EgerLabs. ГРЯЗЕМЕС — офлайн-навигатор без рекламы и подписок.</span>
+        <span>Карты: © OpenStreetMap contributors, OpenTopoMap (CC-BY-SA). Погода: wttr.in.</span>
+      </div>
+    </footer>
+  </div>
+
+  <a class="float-cta" href="/downloads/griazemes-1.4.4.apk" download id="float-cta">
+    <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+    Скачать APK <span>11,8 МБ</span>
+  </a>
+
+  <script src="/assets/site.js" defer></script>
+</body>
+</html>

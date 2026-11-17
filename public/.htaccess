@@ -1,0 +1,67 @@
+ErrorDocument 404 /404.html
+
+AddDefaultCharset UTF-8
+DirectoryIndex index.html
+Options -Indexes -MultiViews
+
+AddType application/vnd.android.package-archive .apk
+AddType application/manifest+json .webmanifest
+AddType image/webp .webp
+AddType font/woff2 .woff2
+AddType image/svg+xml .svg
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Любой хост, кроме канонического, -> https://gzms.ru
+  RewriteCond %{HTTP_HOST} !^gzms\.ru$ [NC]
+  RewriteCond %{HTTP_HOST} !^localhost$ [NC]
+  RewriteCond %{HTTP_HOST} !^127\.0\.0\.1$ [NC]
+  RewriteRule ^ https://gzms.ru%{REQUEST_URI} [L,R=301]
+
+  # http -> https (кроме проверки Let's Encrypt)
+  RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://gzms.ru%{REQUEST_URI} [L,R=301]
+
+  # index.html / index.php -> канонический адрес
+  RewriteCond %{THE_REQUEST} \s/+index\.(html|php)[\s?] [NC]
+  RewriteRule ^ https://gzms.ru/ [L,R=301]
+
+  # старые адреса с egerlabs
+  RewriteRule ^apps/griazemes/?(.*)$ https://gzms.ru/$1 [L,R=301,NC]
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json application/xml application/manifest+json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/vnd.android.package-archive "access plus 1 day"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 1 hour"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "^(apk|version)\.json$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
