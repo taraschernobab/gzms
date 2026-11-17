@@ -19,9 +19,9 @@ AddType image/svg+xml .svg
   RewriteCond %{HTTP_HOST} !^127\.0\.0\.1$ [NC]
   RewriteRule ^ https://gzms.ru%{REQUEST_URI} [L,R=301]
 
-  # http -> https (кроме проверки Let's Encrypt)
-  RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
-  RewriteCond %{HTTPS} !=on
+  # http -> https делает nginx Спринтхоста; в Apache %{HTTPS} всегда off,
+  # поэтому ловим явный X-Forwarded-Proto: http и не дублируем редирект.
+  RewriteCond %{HTTP:X-Forwarded-Proto} =http [NC]
   RewriteRule ^ https://gzms.ru%{REQUEST_URI} [L,R=301]
 
   # index.html / index.php -> канонический адрес
