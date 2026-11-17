@@ -52,6 +52,9 @@ AddType image/svg+xml .svg
 </IfModule>
 
 <IfModule mod_headers.c>
+  <FilesMatch "\.(apk|json)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
   <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
