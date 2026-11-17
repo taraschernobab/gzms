@@ -369,7 +369,7 @@ svg { display: block; }
 /* Постеры показываем целиком: пропорции контейнеров совпадают с очищенными
    исходниками, поэтому ни головы, ни машину не режет. */
 .offline-visual { aspect-ratio: 900 / 1272; }
-.who-visual { aspect-ratio: 900 / 1127; }
+.who-visual { aspect-ratio: 900 / 980; }
 .offline-visual img, .who-visual img { width: 100%; height: 100%; object-fit: cover; }
 .offline-visual img, .who-visual img { max-height: none; object-position: center; }
 .offline-visual__tag {
