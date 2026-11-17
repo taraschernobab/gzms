@@ -60,7 +60,9 @@ ns4.sprinthost.net
 ```
 
 В DNS-зоне Sprinthost уже прописаны A/AAAA на `141.8.192.109` и
-`2a0a:2b42:a:6449::`, MX `mail.gzms.ru`, SPF. SSL Let's Encrypt уже выпущен.
+`2a0a:2b42:a:6449::`, MX `mail.gzms.ru`, SPF. SSL включается в панели Sprinthost
+(переключатель «Let's Encrypt» у сайта); если он отвечает «Not valid!» — нужен
+тикет в поддержку.
 
 ## SEO
 
