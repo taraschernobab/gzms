@@ -33,7 +33,7 @@
   <meta name="twitter:description" content="Офлайн-карта, запись колеи, гряземетр, точки и SOS. APK для Android бесплатно." />
   <meta name="twitter:image" content="https://gzms.ru/images/og.jpg" />
 
-  <link rel="stylesheet" href="/assets/site.css?v=20261117c" />
+  <link rel="stylesheet" href="/assets/site.css?v=20261117d" />
   <script>document.documentElement.classList.add('js');</script>
 
   <script type="application/ld+json">
@@ -393,6 +393,51 @@
         </div>
       </section>
 
+      <section class="section section--live" id="live">
+        <div class="container live-grid">
+          <div class="live-copy reveal">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Живой счётчик</p>
+            <h2>Кто сейчас<br /><em>в грязи.</em></h2>
+            <p class="section-head__lead">
+              Анонимный онлайн: сколько единиц техники прямо сейчас на связи. Без координат,
+              имён и рекламы — только счётчик.
+            </p>
+            <div class="live-value" aria-live="polite">
+              <strong id="live-online">—</strong>
+              <span id="live-unit">единиц техники онлайн</span>
+            </div>
+            <p class="live-note" id="live-note">Обновляется каждые 30 секунд.</p>
+          </div>
+          <div class="live-chart reveal">
+            <div class="live-chart__head">
+              <span>Онлайн за 24 часа</span>
+              <span id="live-peak">пока тихо</span>
+            </div>
+            <svg
+              id="live-chart-svg"
+              viewBox="0 0 100 36"
+              preserveAspectRatio="none"
+              role="img"
+              aria-label="График онлайна за последние 24 часа"
+            >
+              <defs>
+                <linearGradient id="live-fill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#c8ff3d" stop-opacity="0.38" />
+                  <stop offset="100%" stop-color="#c8ff3d" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <g aria-hidden="true">
+                <line x1="0" y1="5" x2="100" y2="5" class="live-chart__grid" />
+                <line x1="0" y1="18" x2="100" y2="18" class="live-chart__grid" />
+                <line x1="0" y1="31" x2="100" y2="31" class="live-chart__grid" />
+              </g>
+              <g id="live-chart-series"></g>
+            </svg>
+            <div class="live-chart__axis"><span>24 ч назад</span><span>сейчас</span></div>
+          </div>
+        </div>
+      </section>
+
       <section class="section section--offline" id="offline">
         <div class="container offline-grid">
           <div class="offline-visual reveal">
@@ -541,6 +586,6 @@
     Скачать APK <span>11,8 МБ</span>
   </a>
 
-  <script src="/assets/site.js" defer></script>
+  <script src="/assets/site.js?v=20261117d" defer></script>
 </body>
 </html>
