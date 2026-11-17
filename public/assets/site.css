@@ -344,12 +344,12 @@ svg { display: block; }
 /* Offline / who */
 .offline-grid, .who-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
 .offline-visual, .who-visual { position: relative; border-radius: 28px; overflow: hidden; border: 1px solid var(--line-soft); }
-/* Зимний постер показываем целиком: его пропорции совпадают с исходником,
-   поэтому ни головы, ни машину не режет. */
-.offline-visual { aspect-ratio: 900 / 1342; }
+/* Постеры показываем целиком: пропорции контейнеров совпадают с очищенными
+   исходниками, поэтому ни головы, ни машину не режет. */
+.offline-visual { aspect-ratio: 900 / 1272; }
+.who-visual { aspect-ratio: 900 / 1127; }
 .offline-visual img, .who-visual img { width: 100%; height: 100%; object-fit: cover; }
-.offline-visual img { max-height: none; object-position: center; }
-.who-visual img { max-height: 640px; }
+.offline-visual img, .who-visual img { max-height: none; object-position: center; }
 .offline-visual__tag {
   position: absolute; left: 1rem; bottom: 1rem; padding: 0.45rem 0.7rem;
   background: rgba(8,11,6,0.72); border: 1px solid var(--line); border-radius: 8px;
@@ -360,7 +360,6 @@ svg { display: block; }
 .stats strong { display: block; font-family: var(--font-display); font-size: clamp(1.5rem, 2.6vw, 2.3rem); color: var(--lime); line-height: 1; }
 .stats span { display: block; margin-top: 0.4rem; color: var(--muted); font-size: 0.74rem; line-height: 1.4; }
 .who-grid { grid-template-columns: 1.1fr 0.9fr; }
-.who-visual img { max-height: 580px; }
 .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
 .chips li {
   padding: 0.55rem 0.9rem; border: 1px solid var(--line-soft); border-radius: 999px;
@@ -491,7 +490,6 @@ details[open] .faq-plus::after { transform: translate(-50%, -50%) rotate(0deg); 
   .section-head--row { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .section-head--row .section-head__lead { max-width: 620px; }
   .mud-grid, .offline-grid, .who-grid, .faq-grid { grid-template-columns: 1fr; }
-  .who-visual img { max-height: 520px; }
   .who-grid .who-visual { order: 2; }
   .faq-copy { position: static; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
