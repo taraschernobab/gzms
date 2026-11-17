@@ -67,6 +67,7 @@ ns4.sprinthost.net
 ## SEO
 
 - Canonical `https://gzms.ru/`, `hreflang` ru-RU.
+- Яндекс.Метрика: счётчик **114300208** (привязан в Вебмастере).
 - JSON-LD: `Organization`, `WebSite`, `MobileApplication`, `FAQPage`.
 - `robots.txt`, `sitemap.xml` с картинками.
 - 301: `http → https`, `www → apex`, `gzms.ru.xsph.ru → apex`,
