@@ -100,11 +100,11 @@
 
     const plural = (value) => {
       const n = Math.abs(Number(value));
-      if (!Number.isFinite(n)) return 'единиц техники онлайн';
-      if (n % 100 >= 11 && n % 100 <= 14) return 'единиц техники онлайн';
-      if (n % 10 === 1) return 'единица техники онлайн';
-      if (n % 10 >= 2 && n % 10 <= 4) return 'единицы техники онлайн';
-      return 'единиц техники онлайн';
+      if (!Number.isFinite(n)) return 'устройств на связи';
+      if (n % 100 >= 11 && n % 100 <= 14) return 'устройств на связи';
+      if (n % 10 === 1) return 'устройство на связи';
+      if (n % 10 >= 2 && n % 10 <= 4) return 'устройства на связи';
+      return 'устройств на связи';
     };
 
     const formatTime = (timestamp) =>
