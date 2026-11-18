@@ -68,7 +68,7 @@
   const liveSvg = document.getElementById('live-chart-svg');
   const liveYPeak = document.getElementById('live-y-peak');
   const liveAvg = document.getElementById('live-avg');
-  const liveActive = document.getElementById('live-active');
+  const liveTotal = document.getElementById('live-total');
   const liveUpdated = document.getElementById('live-updated');
   const liveAxis = document.getElementById('live-chart-axis');
   const liveTooltip = document.getElementById('live-chart-tooltip');
@@ -82,7 +82,7 @@
     liveSvg &&
     liveYPeak &&
     liveAvg &&
-    liveActive &&
+    liveTotal &&
     liveUpdated &&
     liveAxis &&
     liveTooltip
@@ -133,20 +133,23 @@
     };
 
     const renderLiveChart = (data) => {
-      const series = Array.isArray(data.series) ? data.series : [];
+      const dayStart = Math.floor(new Date().setHours(0, 0, 0, 0) / 1000);
+      const series = (Array.isArray(data.series) ? data.series : []).filter(
+        (point) => Number(point.t) >= dayStart,
+      );
       liveSeriesData = series;
       const values = series.map((point) => Number(point.n) || 0);
       const peak = values.reduce((max, value) => Math.max(max, value), 0);
       const total = values.reduce((sum, value) => sum + value, 0);
       const average = series.length ? total / series.length : 0;
-      const active = values.filter((value) => value > 0).length;
       const peakIndex = peak > 0 ? values.indexOf(peak) : -1;
+      const dayTotal = Number.isFinite(Number(data.total)) ? Number(data.total) : null;
       liveScale = Math.max(1, peak);
 
-      livePeak.textContent = peak > 0 ? `пик ${peak} за 30 мин` : 'пока тихо';
+      livePeak.textContent = peak > 0 ? `пик ${peak}` : 'пока тихо';
       liveYPeak.textContent = peak > 0 ? String(peak) : '—';
       liveAvg.textContent = formatAverage(average);
-      liveActive.textContent = `${active} / ${series.length}`;
+      liveTotal.textContent = dayTotal == null ? '—' : String(dayTotal);
       liveUpdated.textContent = formatTime(data.updatedAt || series[series.length - 1]?.t);
 
       if (series.length) {
@@ -161,7 +164,7 @@
       hideTooltip();
       liveSvg.setAttribute(
         'aria-label',
-        `Онлайн за 24 часа. Пик ${peak}, среднее ${formatAverage(average)}, активных получасовых окон ${active}.`,
+        `Онлайн за сегодня. Пик ${peak}, среднее ${formatAverage(average)}, всего за сегодня ${dayTotal == null ? '—' : dayTotal}.`,
       );
 
       if (!series.length) {
@@ -216,7 +219,8 @@
 
     const loadLiveStats = async () => {
       try {
-        const response = await fetch(STATS_URL, { cache: 'no-store' });
+        const dayStart = Math.floor(new Date().setHours(0, 0, 0, 0) / 1000);
+        const response = await fetch(`${STATS_URL}?from=${dayStart}`, { cache: 'no-store' });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
         if (!data || !data.ok || !Array.isArray(data.series)) throw new Error('bad stats');
