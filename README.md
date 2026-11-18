@@ -93,3 +93,7 @@ cp ../griazemes/downloads/griazemes-1.4.4.apk public/downloads/griazemes.apk
 Исходные постеры: `../griazemes/posters/GZMS/`.
 Веб-версии (`hero-portrait.webp`, `winter.webp`, `crew.webp`, `sunset.webp`,
 `poster.webp`, `og.jpg`) — производные, оригиналы не изменяются.
+
+Правило: **один постер — одно место**. Не использовать один и тот же постер
+или кадр повторно на сайте, в ВК, обложках и постах. Для каждой новой задачи
+брать отдельный постер из `../griazemes/posters/`.
