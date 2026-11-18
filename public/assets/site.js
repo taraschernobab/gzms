@@ -98,28 +98,11 @@
     let liveSeriesData = [];
     let liveScale = 1;
 
-    const plural = (value) => {
-      const n = Math.abs(Number(value));
-      if (!Number.isFinite(n)) return 'устройств на связи';
-      if (n % 100 >= 11 && n % 100 <= 14) return 'устройств на связи';
-      if (n % 10 === 1) return 'устройство на связи';
-      if (n % 10 >= 2 && n % 10 <= 4) return 'устройства на связи';
-      return 'устройств на связи';
-    };
-
     const formatTime = (timestamp) =>
       timestamp ? timeFormatter.format(new Date(Number(timestamp) * 1000)) : '—';
 
     const formatAverage = (value) =>
       value < 10 ? value.toFixed(1).replace('.', ',') : String(Math.round(value));
-
-    const deviceWord = (value) => {
-      const n = Math.abs(Number(value));
-      if (n % 100 >= 11 && n % 100 <= 14) return 'устройств';
-      if (n % 10 === 1) return 'устройство';
-      if (n % 10 >= 2 && n % 10 <= 4) return 'устройства';
-      return 'устройств';
-    };
 
     const setActiveBar = (index) => {
       liveSeries.querySelectorAll('.live-chart__bar').forEach((bar) => {
@@ -143,7 +126,7 @@
       const value = Number(point.n) || 0;
       const y = 33 - (value / liveScale) * 29;
       liveTooltip.hidden = false;
-      liveTooltip.textContent = `${formatTime(point.t)} · ${value} ${deviceWord(value)} за 30 мин`;
+      liveTooltip.textContent = `${formatTime(point.t)}–${formatTime(Number(point.t) + 1800)} · ${value} в грязи`;
       liveTooltip.style.left = `${Math.min(92, Math.max(8, ((index + 0.5) / liveSeriesData.length) * 100))}%`;
       liveTooltip.style.top = `${Math.min(92, Math.max(8, (y / 36) * 100))}%`;
       setActiveBar(index);
@@ -240,7 +223,7 @@
         if (!liveAlive) return;
         const online = Number(data.online);
         liveOnline.textContent = Number.isFinite(online) ? String(online) : '—';
-        liveUnit.textContent = plural(online);
+        liveUnit.textContent = 'в грязи';
         liveNote.textContent =
           'Считаем анонимно: без координат, имён и рекламы. Обновляется каждые 30 секунд.';
         renderLiveChart(data);
