@@ -113,6 +113,14 @@
     const formatAverage = (value) =>
       value < 10 ? value.toFixed(1).replace('.', ',') : String(Math.round(value));
 
+    const deviceWord = (value) => {
+      const n = Math.abs(Number(value));
+      if (n % 100 >= 11 && n % 100 <= 14) return 'устройств';
+      if (n % 10 === 1) return 'устройство';
+      if (n % 10 >= 2 && n % 10 <= 4) return 'устройства';
+      return 'устройств';
+    };
+
     const setActiveBar = (index) => {
       liveSeries.querySelectorAll('.live-chart__bar').forEach((bar) => {
         bar.classList.toggle('is-active', Number(bar.dataset.index) === index);
@@ -135,7 +143,7 @@
       const value = Number(point.n) || 0;
       const y = 33 - (value / liveScale) * 29;
       liveTooltip.hidden = false;
-      liveTooltip.textContent = `${formatTime(point.t)} · ${value} онлайн`;
+      liveTooltip.textContent = `${formatTime(point.t)} · ${value} ${deviceWord(value)} за 30 мин`;
       liveTooltip.style.left = `${Math.min(92, Math.max(8, ((index + 0.5) / liveSeriesData.length) * 100))}%`;
       liveTooltip.style.top = `${Math.min(92, Math.max(8, (y / 36) * 100))}%`;
       setActiveBar(index);
@@ -152,7 +160,7 @@
       const peakIndex = peak > 0 ? values.indexOf(peak) : -1;
       liveScale = Math.max(1, peak);
 
-      livePeak.textContent = peak > 0 ? `пик ${peak}` : 'пока тихо';
+      livePeak.textContent = peak > 0 ? `пик ${peak} за 30 мин` : 'пока тихо';
       liveYPeak.textContent = peak > 0 ? String(peak) : '—';
       liveAvg.textContent = formatAverage(average);
       liveActive.textContent = `${active} / ${series.length}`;
