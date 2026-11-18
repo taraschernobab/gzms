@@ -67,7 +67,6 @@
   const liveSeries = document.getElementById('live-chart-series');
   const liveSvg = document.getElementById('live-chart-svg');
   const liveYPeak = document.getElementById('live-y-peak');
-  const liveAvg = document.getElementById('live-avg');
   const liveTotal = document.getElementById('live-total');
   const liveUpdated = document.getElementById('live-updated');
   const liveAxis = document.getElementById('live-chart-axis');
@@ -81,7 +80,6 @@
     liveSeries &&
     liveSvg &&
     liveYPeak &&
-    liveAvg &&
     liveTotal &&
     liveUpdated &&
     liveAxis &&
@@ -100,9 +98,6 @@
 
     const formatTime = (timestamp) =>
       timestamp ? timeFormatter.format(new Date(Number(timestamp) * 1000)) : '—';
-
-    const formatAverage = (value) =>
-      value < 10 ? value.toFixed(1).replace('.', ',') : String(Math.round(value));
 
     const setActiveBar = (index) => {
       liveSeries.querySelectorAll('.live-chart__bar').forEach((bar) => {
@@ -140,15 +135,12 @@
       liveSeriesData = series;
       const values = series.map((point) => Number(point.n) || 0);
       const peak = values.reduce((max, value) => Math.max(max, value), 0);
-      const total = values.reduce((sum, value) => sum + value, 0);
-      const average = series.length ? total / series.length : 0;
       const peakIndex = peak > 0 ? values.indexOf(peak) : -1;
       const dayTotal = Number.isFinite(Number(data.total)) ? Number(data.total) : null;
       liveScale = Math.max(1, peak);
 
       livePeak.textContent = peak > 0 ? `пик ${peak}` : 'пока тихо';
       liveYPeak.textContent = peak > 0 ? String(peak) : '—';
-      liveAvg.textContent = formatAverage(average);
       liveTotal.textContent = dayTotal == null ? '—' : String(dayTotal);
       liveUpdated.textContent = formatTime(data.updatedAt || series[series.length - 1]?.t);
 
@@ -164,7 +156,7 @@
       hideTooltip();
       liveSvg.setAttribute(
         'aria-label',
-        `Онлайн за сегодня. Пик ${peak}, среднее ${formatAverage(average)}, всего за сегодня ${dayTotal == null ? '—' : dayTotal}.`,
+        `Онлайн за сегодня. Пик ${peak}, всего за сегодня ${dayTotal == null ? '—' : dayTotal}.`,
       );
 
       if (!series.length) {
