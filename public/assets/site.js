@@ -65,12 +65,38 @@
   const liveNote = document.getElementById('live-note');
   const livePeak = document.getElementById('live-peak');
   const liveSeries = document.getElementById('live-chart-series');
+  const liveSvg = document.getElementById('live-chart-svg');
+  const liveYPeak = document.getElementById('live-y-peak');
+  const liveAvg = document.getElementById('live-avg');
+  const liveActive = document.getElementById('live-active');
+  const liveUpdated = document.getElementById('live-updated');
+  const liveAxis = document.getElementById('live-chart-axis');
+  const liveTooltip = document.getElementById('live-chart-tooltip');
 
-  if (liveOnline && liveUnit && liveNote && livePeak && liveSeries) {
+  if (
+    liveOnline &&
+    liveUnit &&
+    liveNote &&
+    livePeak &&
+    liveSeries &&
+    liveSvg &&
+    liveYPeak &&
+    liveAvg &&
+    liveActive &&
+    liveUpdated &&
+    liveAxis &&
+    liveTooltip
+  ) {
     const STATS_URL = 'https://egerlabs.ru/apps/griazemes/api/stats.php';
     const REFRESH_MS = 30000;
+    const timeFormatter = new Intl.DateTimeFormat('ru-RU', {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
     let liveTimer;
     let liveAlive = true;
+    let liveSeriesData = [];
+    let liveScale = 1;
 
     const plural = (value) => {
       const n = Math.abs(Number(value));
@@ -81,27 +107,120 @@
       return 'единиц техники онлайн';
     };
 
-    const renderLiveChart = (series) => {
-      const peak = series.reduce((max, point) => Math.max(max, Number(point.n) || 0), 0);
+    const formatTime = (timestamp) =>
+      timestamp ? timeFormatter.format(new Date(Number(timestamp) * 1000)) : '—';
+
+    const formatAverage = (value) =>
+      value < 10 ? value.toFixed(1).replace('.', ',') : String(Math.round(value));
+
+    const setActiveBar = (index) => {
+      liveSeries.querySelectorAll('.live-chart__bar').forEach((bar) => {
+        bar.classList.toggle('is-active', Number(bar.dataset.index) === index);
+      });
+    };
+
+    const hideTooltip = () => {
+      liveTooltip.hidden = true;
+      setActiveBar(-1);
+    };
+
+    const showTooltip = (event) => {
+      if (!liveSeriesData.length) return;
+      const rect = liveSvg.getBoundingClientRect();
+      if (!rect.width) return;
+      const ratio = Math.max(0, Math.min(0.9999, (event.clientX - rect.left) / rect.width));
+      const index = Math.floor(ratio * liveSeriesData.length);
+      const point = liveSeriesData[index];
+      if (!point) return;
+      const value = Number(point.n) || 0;
+      const y = 33 - (value / liveScale) * 29;
+      liveTooltip.hidden = false;
+      liveTooltip.textContent = `${formatTime(point.t)} · ${value} онлайн`;
+      liveTooltip.style.left = `${Math.min(92, Math.max(8, ((index + 0.5) / liveSeriesData.length) * 100))}%`;
+      liveTooltip.style.top = `${Math.min(92, Math.max(8, (y / 36) * 100))}%`;
+      setActiveBar(index);
+    };
+
+    const renderLiveChart = (data) => {
+      const series = Array.isArray(data.series) ? data.series : [];
+      liveSeriesData = series;
+      const values = series.map((point) => Number(point.n) || 0);
+      const peak = values.reduce((max, value) => Math.max(max, value), 0);
+      const total = values.reduce((sum, value) => sum + value, 0);
+      const average = series.length ? total / series.length : 0;
+      const active = values.filter((value) => value > 0).length;
+      const peakIndex = peak > 0 ? values.indexOf(peak) : -1;
+      liveScale = Math.max(1, peak);
+
       livePeak.textContent = peak > 0 ? `пик ${peak}` : 'пока тихо';
+      liveYPeak.textContent = peak > 0 ? String(peak) : '—';
+      liveAvg.textContent = formatAverage(average);
+      liveActive.textContent = `${active} / ${series.length}`;
+      liveUpdated.textContent = formatTime(data.updatedAt || series[series.length - 1]?.t);
+
+      if (series.length) {
+        const labels = [...liveAxis.children];
+        const positions = [0, 0.25, 0.5, 0.75, 1];
+        labels.forEach((label, index) => {
+          const pointIndex = Math.round((series.length - 1) * positions[index]);
+          label.textContent = formatTime(series[pointIndex].t);
+        });
+      }
+
+      hideTooltip();
+      liveSvg.setAttribute(
+        'aria-label',
+        `Онлайн за 24 часа. Пик ${peak}, среднее ${formatAverage(average)}, активных получасовых окон ${active}.`,
+      );
+
       if (!series.length) {
-        liveSeries.innerHTML =
-          '<line x1="0" y1="33" x2="100" y2="33" stroke="rgba(242,241,231,.18)" stroke-width="1" vector-effect="non-scaling-stroke"/>';
+        liveSeries.innerHTML = '';
         return;
       }
-      const scale = Math.max(1, peak);
-      const points = series.map((point, index) => {
-        const x = series.length <= 1 ? 0 : (index / (series.length - 1)) * 100;
-        const y = 33 - ((Number(point.n) || 0) / scale) * 29;
+
+      const slot = 100 / series.length;
+      const barWidth = Math.max(0.42, slot * 0.58);
+      const points = values.map((value, index) => {
+        const x = slot * (index + 0.5);
+        const y = 33 - (value / liveScale) * 29;
         return [x, y];
       });
       const line = points.map(([x, y]) => `${x.toFixed(2)},${y.toFixed(2)}`).join(' ');
       const last = points[points.length - 1];
+      const bars = points
+        .map(([x, y], index) => {
+          const height = 33 - y;
+          if (height <= 0) return '';
+          return (
+            `<rect class="live-chart__bar${index === peakIndex ? ' is-peak' : ''}" data-index="${index}" ` +
+            `x="${(x - barWidth / 2).toFixed(2)}" y="${y.toFixed(2)}" ` +
+            `width="${barWidth.toFixed(2)}" height="${height.toFixed(2)}" rx="0.25"/>`
+          );
+        })
+        .join('');
+      const peakMarker =
+        peakIndex >= 0
+          ? `<line class="live-chart__peak-line" x1="${points[peakIndex][0].toFixed(2)}" y1="${points[peakIndex][1].toFixed(2)}" x2="${points[peakIndex][0].toFixed(2)}" y2="33"/>` +
+            `<circle class="live-chart__peak-dot" cx="${points[peakIndex][0].toFixed(2)}" cy="${points[peakIndex][1].toFixed(2)}" r="1.1"/>`
+          : '';
+      const hits = points
+        .map(
+          ([x], index) =>
+            `<rect class="live-chart__hit" x="${(x - slot / 2).toFixed(2)}" y="0" width="${slot.toFixed(2)}" height="36"/>`,
+        )
+        .join('');
+
       liveSeries.innerHTML =
         `<polygon points="0,36 ${line} 100,36" fill="url(#live-fill)"/>` +
-        `<polyline points="${line}" fill="none" stroke="#c8ff3d" stroke-width="1.4" ` +
-        'stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>' +
-        `<circle cx="${last[0].toFixed(2)}" cy="${last[1].toFixed(2)}" r="1.5" fill="#c8ff3d"/>`;
+        bars +
+        `<polyline class="live-chart__line" points="${line}"/>` +
+        peakMarker +
+        `<circle class="live-chart__current" cx="${last[0].toFixed(2)}" cy="${last[1].toFixed(2)}" r="1.5"/>` +
+        hits;
+
+      liveSvg.onpointermove = showTooltip;
+      liveSvg.onpointerdown = showTooltip;
+      liveSvg.onpointerleave = hideTooltip;
     };
 
     const loadLiveStats = async () => {
@@ -116,7 +235,7 @@
         liveUnit.textContent = plural(online);
         liveNote.textContent =
           'Считаем анонимно: без координат, имён и рекламы. Обновляется каждые 30 секунд.';
-        renderLiveChart(data.series);
+        renderLiveChart(data);
       } catch {
         if (liveAlive) {
           liveNote.textContent = 'Счётчик временно недоступен. Попробуй обновить страницу.';
