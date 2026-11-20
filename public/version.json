@@ -1,13 +1,13 @@
 {
   "app": "griazemes",
   "name": "ГРЯЗЕМЕС",
-  "version": "1.4.4",
-  "versionCode": 29903653,
-  "apk": "griazemes-1.4.4.apk",
-  "size": 12370371,
-  "sha256": "b92bb7cd2810c9733e2660e4f063330e5025c704f877cd7745f48693d4472f25",
-  "updatedAt": "2026-11-09T10:13:25.564Z",
-  "url": "https://gzms.ru/downloads/griazemes-1.4.4.apk",
-  "downloadUrl": "https://gzms.ru/downloads/griazemes-1.4.4.apk",
-  "notes": "1.4.4: один слой карты Топо. Плюс правила контента, жалоба и 18+ из 1.4.3."
+  "version": "1.4.5",
+  "versionCode": 29919170,
+  "apk": "griazemes-1.4.5.apk",
+  "size": 12373991,
+  "sha256": "587351735f2fc88b665b10626d4f02b9bd49b367379d62c23ea6ba681f1158a0",
+  "updatedAt": "2026-11-20T04:50:28.701Z",
+  "url": "https://gzms.ru/downloads/griazemes-1.4.5.apk",
+  "downloadUrl": "https://gzms.ru/downloads/griazemes-1.4.5.apk",
+  "notes": "1.4.5: правила контента без перечня запрещённых тем, форма жалобы и удаление данных. Обновления — через RuStore."
 }

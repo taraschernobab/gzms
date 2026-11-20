@@ -28,11 +28,12 @@ if (!keyStat?.isFile()) {
   process.exit(1);
 }
 
-const apk = path.join(PUBLIC, 'downloads', 'griazemes-1.4.4.apk');
+const manifest = JSON.parse(await fs.readFile(path.join(PUBLIC, 'apk.json'), 'utf8'));
+const apk = path.join(PUBLIC, 'downloads', manifest.apk);
 const apkStat = await fs.stat(apk).catch(() => null);
 if (!apkStat) {
   console.error(`\nНет APK: ${apk}`);
-  console.error('Скопируй downloads/griazemes-1.4.4.apk из проекта griazemes перед деплоем.');
+  console.error(`Скопируй downloads/${manifest.apk} из проекта griazemes перед деплоем.`);
   process.exit(1);
 }
 
@@ -65,4 +66,4 @@ run('ssh', [
 ]);
 
 console.log('[deploy] готово: https://gzms.ru/');
-console.log(`[deploy] проверь: https://gzms.ru/, /privacy.html, /ugc.html, /downloads/griazemes-1.4.4.apk`);
+console.log(`[deploy] проверь: https://gzms.ru/, /privacy.html, /ugc.html, /downloads/${manifest.apk}`);

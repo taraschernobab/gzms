@@ -38,7 +38,7 @@ node scripts/serve.mjs
 ## Деплой
 
 Нужен SSH-ключ `~/.ssh/sprinthost_radio` и APK
-`../griazemes/downloads/griazemes-1.4.4.apk`.
+`../griazemes/downloads/griazemes-1.4.5.apk`.
 
 ```bash
 node scripts/deploy.mjs
@@ -81,8 +81,8 @@ APK и `apk.json` — отдельные артефакты. В Git лежит �
 Перед деплоем скопировать свежий APK:
 
 ```bash
-cp ../griazemes/downloads/griazemes-1.4.4.apk public/downloads/
-cp ../griazemes/downloads/griazemes-1.4.4.apk public/downloads/griazemes.apk
+cp ../griazemes/downloads/griazemes-1.4.5.apk public/downloads/
+cp ../griazemes/downloads/griazemes-1.4.5.apk public/downloads/griazemes.apk
 ```
 
 После обновления приложения поменять `version`, `size`, `sha256`, `url`
